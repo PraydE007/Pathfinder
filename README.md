@@ -6,6 +6,7 @@ My own UCODE pathfinder
     ./pathfinder [filename]
 
   File examples:
+
     4
     Greenland-Bananal,8
     Fraser-Greenland,10
@@ -21,4 +22,5 @@ My own UCODE pathfinder
     C-E,15
     D-E,4
     
+
 CLEAR LINE MUST BE IN THE END OF FILE
