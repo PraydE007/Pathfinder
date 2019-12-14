@@ -2,6 +2,7 @@
 My own UCODE pathfinder
 
   How to use:
+
     make
     ./pathfinder [filename]
 
