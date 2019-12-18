@@ -3,7 +3,7 @@
 void mx_print_route(t_pf *pf, t_rec *rec, int *output) {
     int s = 0;
 
-    while (output[s + 1] != rec->i && s + 1 != pf->pC)
+    while (output[s] != rec->i && s + 1 != pf->pC)
         s++;
     mx_printchar('\n');
     mx_printstr("Route: ");

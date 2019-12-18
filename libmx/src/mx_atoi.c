@@ -1,7 +1,7 @@
 #include "libmx.h"
 
-int mx_atoi(char *str) {
-    int res = 0;
+long mx_atoi(char *str) {
+    long res = 0;
     int sign = 1;
     int i = 0;
 

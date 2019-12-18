@@ -5,6 +5,6 @@ void mx_check_first_line(char *line) {
 
     for (int i = 0; i < len; i++) {
         if (line[i] < 48 || line[i] > 57)
-            mx_print_error(ERROR_LOGIC, NULL, NULL);
+            mx_print_error(ERROR_LINE, "1", ERROR_INVALID);
     }
 }

@@ -1,7 +1,7 @@
 #include "pathfinder.h"
 
 static bool is_symbol(char c) {
-    if ((c >= 65 && c <= 90) || ((c >= 97) && (c <= 122))) {
+    if (c >= 32 && c <= 126) {
         return true;
     }
     return false;

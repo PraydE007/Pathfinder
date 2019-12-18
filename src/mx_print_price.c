@@ -3,7 +3,7 @@
 static void output_for(t_pf *pf, t_rec *rec, int *output, int *triger) {
     int s = 0;
 
-    while (output[s + 1] != rec->i && s + 1 != pf->pC)
+    while (output[s] != rec->i && s + 1 != pf->pC)
         s++;
     for (int x = s + 1; x <= pf->pC; x++) {
         if (output[x] != rec->i && (*triger) > 0) {
@@ -22,7 +22,7 @@ static void output_for(t_pf *pf, t_rec *rec, int *output, int *triger) {
 
 int mx_print_price(t_pf *pf, t_rec *rec, int *output) {
     int triger = 0;
-    
+
     mx_printchar('\n');
     mx_printstr("Distance: ");
     output_for(pf, rec, output, &triger);

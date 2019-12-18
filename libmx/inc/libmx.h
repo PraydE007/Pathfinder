@@ -24,7 +24,7 @@ char **mx_strsplit(const char *s, char c);
 char *mx_strndup(const char *s1, size_t n);
 char *mx_strncpy(char *dst, const char *src, int len);
 
-int mx_atoi(char *str); //
+long mx_atoi(char *str); //
 int mx_nbrlen(long long n); //
 int mx_strlen(const char *s);
 int mx_arr_size(const char **str); //

@@ -71,7 +71,7 @@ int mx_check_number(char *line);
 int **mx_create_mat(int pC);
 int mx_check_for_trigers(t_dey *dey, int pC);
 int mx_print_price(t_pf *pf, t_rec *rec, int *output);
-int mx_parse_str(char ***pA, char **wordsArr, int wC);
+int mx_parse_str(t_pf **pf, char **wordsArr);
 
 char **mx_create_points(int pC);
 

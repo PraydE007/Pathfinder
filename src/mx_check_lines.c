@@ -13,28 +13,38 @@ static bool is_number(char c) {
     return false;
 }
 
-static bool check_points(char *str, int *i, char delim) {
+static bool check_points(char *str, int *x, char delim) {
     bool result = false;
 
-    while (is_symbol(str[(*i)])) {
+    while (is_symbol(str[(*x)])) {
         result = true;
-        (*i)++;
+        (*x)++;
     }
-    if (str[(*i)] != delim) 
+    if (str[(*x)] != delim) 
         result = false;
-    (*i)++;
+    (*x)++;
     return result;
 }
 
-static bool check_decimal(char *str, int *i) {
+static bool check_decimal(char *str, int *x, int i) {
     bool result = false;
+    char *strnum = mx_strndup(&str[(*x)], 20);
+    long len = 0;
 
-    while(is_number(str[(*i)])) {
-        result = true;
-        (*i)++;
+    if (strnum == NULL)
+        mx_print_error(ERROR_LINE, mx_itoa(i + 1), ERROR_INVALID);
+    else {
+        len = mx_atoi(strnum);
+        if (len <= 0 || len > 2147483647)
+            mx_print_error(ERROR_LINE, mx_itoa(i + 1), ERROR_INVALID);
     }
-    if (str[(*i)] != '\0')
+    while(is_number(str[(*x)])) {
+        result = true;
+        (*x)++;
+    }
+    if (str[(*x)] != '\0')
         result = false;
+    mx_strdel(&strnum);
     return result;
 }
 
@@ -48,7 +58,7 @@ void mx_check_lines(t_pf *pf, char **wordsArr) {
         x = 0;
         one = check_points(wordsArr[i], &x, '-');
         two = check_points(wordsArr[i], &x, ',');
-        tree = check_decimal(wordsArr[i], &x);
+        tree = check_decimal(wordsArr[i], &x, i);
         if (!one || !two || !tree)
             mx_print_error(ERROR_LINE, mx_itoa(i + 1), ERROR_INVALID);
     }
