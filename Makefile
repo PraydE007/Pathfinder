@@ -1,6 +1,8 @@
 NAME = pathfinder
 
-LIB = ./libmx/libmx.a \
+ROOT_A = libmx.a \
+
+LIB_A = ./libmx/libmx.a \
 
 HEADERS = pathfinder.h \
 
@@ -35,6 +37,7 @@ FILES = pathfinder \
 INC_H = $(addprefix "inc/", $(HEADERS))
 
 ROOT_C = $(addsuffix ".c", $(FILES))
+
 SRC_C = $(addprefix "src/", $(ROOT_C))
 
 ROOT_O = $(addsuffix ".o", $(FILES))
@@ -47,10 +50,9 @@ install:
 	@make -C libmx install
 	@cp $(SRC_C) .
 	@cp $(INC_H) .
+	@cp $(LIB_A) .
 	@clang $(CFLAGS) -c $(ROOT_C)
-	@clang $(CFLAGS) $(ROOT_O) $(LIB) -o $(NAME)
-	@rm -rf $(ROOT_C)
-	@rm -rf $(HEADERS)
+	@clang $(CFLAGS) $(ROOT_O) $(ROOT_A) -o $(NAME)
 	@mkdir -p obj
 	@cp $(ROOT_O) obj/
 	@rm -rf $(ROOT_O)
@@ -61,6 +63,9 @@ uninstall: clean
 
 clean:
 	@make -C libmx clean
+	@rm -rf $(ROOT_C)
+	@rm -rf $(ROOT_A)
+	@rm -rf $(HEADERS)
 	@rm -rf obj
 
-reinstall: all
+reinstall: uninstall install
